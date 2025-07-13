@@ -24,12 +24,16 @@ class ProdukController extends Controller
             'nama_produk' => 'required|string|max:255|unique:produks,nama_produk',
         ]);
 
+        // Ganti spasi dengan tanda "-"
+        $nama_produk = str_replace(' ', '-', $request->nama_produk);
+
         Produk::create([
-            'nama_produk' => $request->nama_produk,
+            'nama_produk' => $nama_produk,
         ]);
 
         return redirect()->route('tampil_produk')->with('success', 'Produk berhasil ditambahkan!');
     }
+
 
     public function edit($id) // Menerima ID secara eksplisit
     {

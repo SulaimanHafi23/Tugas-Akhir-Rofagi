@@ -1,6 +1,9 @@
-<a href="{{ route('beranda') }}" class="brand-link d-block px-3 py-2" style="width: 100%;">
-    <span class="brand-text font-weight-light w-100 d-inline-block text-center">Kerupuk Rumahan</span>
+<a href="{{ route('beranda') }}" class="brand-link d-flex align-items-center px-3 py-2">
+    <img src="{{ asset('assets/img/Background_web.png') }}" alt="Logo"
+        style="height: 30px; width: auto; margin-right: 10px;">
+    <span class="brand-text font-weight-light">Kerupuk Rumahan</span>
 </a>
+
 
 <div class="sidebar">
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -9,7 +12,7 @@
         </div> --}}
         <div class="info">
             @auth
-                <a href="#" class="d-block" >{{ Auth::user()->name }}</a> {{-- Menampilkan nama pengguna --}}
+                <a href="#" class="d-block">{{ Auth::user()->name }}</a> {{-- Menampilkan nama pengguna --}}
             @else
                 <a href="#" class="d-block">Guest</a> {{-- Jika tidak ada pengguna login --}}
             @endauth

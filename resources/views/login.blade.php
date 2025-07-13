@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/Background_web.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Aplikasi</title>
@@ -19,14 +21,21 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             width: 350px;
-        }
-        .login-container h2 {
             text-align: center;
+        }
+        .login-logo {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            margin: 0 auto 20px auto;
+        }
+        h2 {
             margin-bottom: 20px;
             color: #333;
         }
         .form-group {
             margin-bottom: 15px;
+            text-align: left;
         }
         .form-group label {
             display: block;
@@ -36,7 +45,7 @@
         }
         .form-group input[type="text"],
         .form-group input[type="password"] {
-            width: calc(100% - 20px);
+            width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -44,14 +53,11 @@
         .form-check {
             display: flex;
             align-items: center;
+            margin-bottom: 15px;
+            text-align: left;
         }
-        .form-check input[type="checkbox"] {
+        .form-check input {
             margin-right: 8px;
-        }
-        .error {
-            color: red;
-            font-size: 0.85em;
-            margin-top: 5px;
         }
         .btn-primary {
             width: 100%;
@@ -82,10 +88,18 @@
             border-radius: 5px;
             margin-bottom: 15px;
         }
+        .error {
+            color: red;
+            font-size: 0.85em;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
+
+        {{-- Logo --}}
+        <img src="{{ asset('assets/img/Background.png') }}" alt="Logo" class="login-logo">
+
         <h2>Login</h2>
 
         {{-- Pesan sukses --}}
@@ -104,6 +118,7 @@
             </div>
         @endif
 
+        {{-- Form Login --}}
         <form action="{{ route('login_submit') }}" method="POST">
             @csrf
 
@@ -124,12 +139,9 @@
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                <label class="form-check-label" for="remember">
-                    Ingat saya
-                </label>
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Ingat saya</label>
             </div>
-
 
             <button type="submit" class="btn-primary">Login</button>
         </form>

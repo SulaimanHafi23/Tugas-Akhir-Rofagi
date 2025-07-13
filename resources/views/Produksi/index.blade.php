@@ -1,4 +1,4 @@
-@extends('layouts/konten')
+@extends('layouts.konten')
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('beranda') }}">Home</a></li>
                     <li class="breadcrumb-item active">Produksi</li>
                 </ol>
             </div>
@@ -59,15 +59,6 @@
                                     </tr>
                                 @endforelse
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Tanggal Produksi</th>
-                                    <th>Jenis Kerupuk</th>
-                                    <th>Jumlah Kerupuk</th>
-                                    <th>Opsi</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>

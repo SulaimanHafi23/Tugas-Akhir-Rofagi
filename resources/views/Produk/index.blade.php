@@ -1,4 +1,4 @@
-@extends('layouts/konten')
+@extends('layouts.konten')
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('beranda') }}">Home</a></li>
                         <li class="breadcrumb-item active">Produk</li>
                     </ol>
                 </div>
@@ -19,6 +19,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Data Produk</h3>
@@ -65,13 +66,6 @@
                                         </tr>
                                     @endforelse
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Produk</th>
-                                        <th>Opsi</th>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -83,24 +77,23 @@
 
 @push('scripts')
     <script>
-        $(function() {
-            // Event listener untuk semua tombol dengan kelas 'delete-button'
-            $('.delete-button').on('click', function() {
-                const produkId = $(this).data('id'); // Ambil ID produk dari data-id
-                const formId = '#delete-form-' + produkId; // Bentuk ID form yang benar
 
+        // SweetAlert Delete
+        $(function() {
+            $('.delete-button').on('click', function() {
+                const produkId = $(this).data('id');
+                const formId = '#delete-form-' + produkId;
                 Swal.fire({
                     title: 'Apakah Anda yakin?',
                     text: "Data produk ini akan dihapus secara permanen!",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#d33', // Warna merah untuk tombol konfirmasi
-                    cancelButtonColor: '#6c757d', // Warna abu-abu untuk tombol batal
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#6c757d',
                     confirmButtonText: 'Ya, hapus!',
                     cancelButtonText: 'Batal'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // Jika pengguna mengklik "Ya, hapus!", submit form yang sesuai
                         $(formId).submit();
                     }
                 });

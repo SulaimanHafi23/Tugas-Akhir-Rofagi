@@ -1,11 +1,23 @@
-@extends('layouts/konten')
+@extends('layouts.konten')
 @section('content')
 
-<div class="content-header">
-    <h1 class="m-0">Tambah Produksi</h1>
-</div>
-
 <section class="content">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Tambah Produk Baru</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ route('beranda') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('tampil_produksi') }}">Produksi</a></li>
+                        <li class="breadcrumb-item active">Tambah</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
 
         {{-- ✅ Form Simpan --}}
@@ -50,24 +62,26 @@
 
         {{-- ✅ Form Kontrol Produksi --}}
         <div class="mt-3 d-flex flex-wrap">
-            {{-- Tombol Mulai --}}
-            <form action="{{ route('start_produksi') }}" method="POST" class="me-2">
-                @csrf
-                <input type="hidden" name="produk_id" id="produk_id_start">
-                <button type="submit" class="btn btn-primary">Mulai</button>
-            </form>
+            <div class="me-2">
+                <form action="{{ route('start_produksi') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="produk_id" id="produk_id_start">
+                    <button type="submit" class="btn btn-primary">Mulai</button>
+                </form>
+            </div>
+            <div class="me-2">
+                <form action="{{ route('selesai_produksi') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-secondary">Selesai</button>
+                </form>
+            </div>
 
-            {{-- Tombol Selesai --}}
-            <form action="{{ route('selesai_produksi') }}" method="POST" class="me-2">
-                @csrf
-                <button type="submit" class="btn btn-secondary">Selesai</button>
-            </form>
-
-            {{-- Tombol Reset --}}
-            <form action="{{ route('reset_produksi') }}" method="POST" class="me-2">
-                @csrf
-                <button type="submit" class="btn btn-danger">Reset</button>
-            </form>
+            <div class="me-2">
+                <form action="{{ route('reset_produksi') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Reset</button>
+                </form>
+            </div>
         </div>
     </div>
 </section>
