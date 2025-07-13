@@ -34,7 +34,7 @@ class UserController extends Controller
         ], $remember)) {
             $request->session()->regenerate();
 
-            return redirect()->route('beranda')->with('success', 'Berhasil login!');
+            return redirect()->route('Beranda')->with('success', 'Berhasil login!');
         }
 
         return back()->withErrors([

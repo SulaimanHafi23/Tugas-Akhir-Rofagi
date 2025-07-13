@@ -22,14 +22,14 @@ class ProduksiController extends Controller
             ->orderBy('tanggal', 'desc')
             ->get();
 
-        return view('produksi.index', compact('produksiPerTanggal'));
+        return view('Produksi.index', compact('produksiPerTanggal'));
     }
 
         public function create()
     {
         $produks = Produk::all();
         $NodeMcu = NodeMCU::all();
-        return view('produksi.create', compact('produks', 'NodeMcu'));
+        return view('Produksi.create', compact('produks', 'NodeMcu'));
     }
 
     public function store(Request $request)
@@ -83,7 +83,7 @@ class ProduksiController extends Controller
         // Hitung jumlah jenis kerupuk unik (distinct produk_id)
         $jenisKerupuk = $produksi->pluck('produk_id')->unique()->count();
 
-        return view('produksi.show', compact('tanggal', 'produksi', 'totalJumlah', 'jenisKerupuk'));
+        return view('Produksi.show', compact('tanggal', 'produksi', 'totalJumlah', 'jenisKerupuk'));
     }
 
     public function delete($id) 

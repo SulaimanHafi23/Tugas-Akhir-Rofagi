@@ -10,12 +10,12 @@ class ProdukController extends Controller
     public function index()
     {
         $produks = Produk::all();
-        return view('produk.index', compact('produks'));
+        return view('Produk.index', compact('produks'));
     }
 
     public function create()
     {
-        return view('produk.create');
+        return view('Produk.create');
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class ProdukController extends Controller
         // Mencari produk berdasarkan ID, atau menampilkan error 404 jika tidak ditemukan
         $produk = Produk::findOrFail($id);
 
-        return view('produk.edit', compact('produk'));
+        return view('Produk.edit', compact('produk'));
     }
 
     public function update(Request $request, $id) // Menerima ID secara eksplisit
