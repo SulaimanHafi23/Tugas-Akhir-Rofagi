@@ -1,4 +1,4 @@
-<a href="/dashboard" class="brand-link d-block px-3 py-2" style="width: 100%;">
+<a href="{{ route('beranda') }}" class="brand-link d-block px-3 py-2" style="width: 100%;">
     <span class="brand-text font-weight-light w-100 d-inline-block text-center">Kerupuk Rumahan</span>
 </a>
 

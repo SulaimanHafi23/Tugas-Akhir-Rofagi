@@ -49,27 +49,26 @@
         </form>
 
         {{-- ✅ Form Kontrol Produksi --}}
-        <div class="mt-3 d-flex gap-2 flex-wrap">
+        <div class="mt-3 d-flex flex-wrap">
             {{-- Tombol Mulai --}}
-            <form action="{{ route('start_produksi') }}" method="POST">
+            <form action="{{ route('start_produksi') }}" method="POST" class="me-2">
                 @csrf
                 <input type="hidden" name="produk_id" id="produk_id_start">
                 <button type="submit" class="btn btn-primary">Mulai</button>
             </form>
 
             {{-- Tombol Selesai --}}
-            <form action="{{ route('selesai_produksi') }}" method="POST">
+            <form action="{{ route('selesai_produksi') }}" method="POST" class="me-2">
                 @csrf
                 <button type="submit" class="btn btn-secondary">Selesai</button>
             </form>
 
             {{-- Tombol Reset --}}
-            <form action="{{ route('reset_produksi') }}" method="POST">
+            <form action="{{ route('reset_produksi') }}" method="POST" class="me-2">
                 @csrf
                 <button type="submit" class="btn btn-danger">Reset</button>
             </form>
         </div>
-
     </div>
 </section>
 

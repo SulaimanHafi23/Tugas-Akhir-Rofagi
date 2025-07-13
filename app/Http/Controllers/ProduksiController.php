@@ -115,31 +115,34 @@ class ProduksiController extends Controller
 
         return back()->with('error', 'Produksi sudah dimulai.');
     }
-
+    
     public function selesai(Request $request)
     {
-
         $NodeMcu = NodeMCU::findOrFail(1);
-
-        // Memperbarui record produk
-        $NodeMcu->update([
-            'nama_produk' => 'kosong',
-            'jumlah' => 0,
-            'status' => 'selesai',
-        ]);
-        return redirect()->route('tampil_produksi')->with('success', 'Proses produksi telah diselesaikan!');
+        
+        if ($NodeMcu->jumlah == 0) {
+            $NodeMcu->update([
+                'nama_produk' => 'kosong',
+                'jumlah' => 0,
+                'status' => 'selesai',
+            ]);
+            return redirect()->route('tampil_produksi')->with('success', 'Proses produksi telah diselesaikan!');
+        }
+        return back()->with('error', 'Silahkan Reset atau Simpan Ke Database Terlebih dahulu.');
     }
 
     public function reset()
     {
         $NodeMcu = NodeMCU::findOrFail(1);
 
-        $NodeMcu->update([
-            'jumlah' => 0,
-            'status' => 'reset',
-        ]);
-
-        return back()->with('success', 'IOT berhasil di reset.');
+        if ($NodeMcu->nama_produk != 'kosong') {
+            $NodeMcu->update([
+                'jumlah' => 0,
+                'status' => 'reset',
+            ]);
+            return back()->with('success', 'IOT berhasil di reset.');
+        }
+        return back()->with('error', 'Tidak ada produksi dimulai.');
     }
 
 }
