@@ -18,6 +18,6 @@ class BerandaController extends Controller
         $produksi_hari_ini = Produksi::whereDate('created_at', Carbon::today())->sum('jumlah');
 
         // Kirim ke view
-        return view('beranda', compact('jumlah_produk', 'produksi_hari_ini'));
+        return view('Beranda', compact('jumlah_produk', 'produksi_hari_ini'));
     }
 }
