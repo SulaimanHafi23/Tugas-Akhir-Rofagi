@@ -75,7 +75,7 @@
 
 {{-- ✅ JavaScript --}}
 <script>
-    const apiUrl = "http://10.94.203.117/TugasAkhir/public/api/nodemcu?token=Kerupuk-Rofagi-Yusuf-123123";
+    const apiUrl = "https://kerupuk-rahayu.nusatalent.id/api/nodemcu?token=Kerupuk-Rofagi-Yusuf-123123";
 
     function updateRealTimeData() {
         fetch(apiUrl)
