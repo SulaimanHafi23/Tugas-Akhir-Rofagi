@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Produk;
 use App\Models\NodeMCU;
 use App\Models\Produksi;
@@ -47,7 +48,8 @@ class ProduksiController extends Controller
             return back()->with('error', 'Produk tidak ditemukan.');
         }
 
-        $produksi = Produksi::where('produk_id', $produk->id)
+        $produk = Produk::where('nama_produk', $nama_produk)
+            ->whereDate('created_at', Carbon::today())
             ->first();
 
         if ($produksi) {
